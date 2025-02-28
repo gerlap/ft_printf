@@ -1,5 +1,0 @@
-1) guide: https://csnotes.medium.com/ft-printf-tutorial-42project-f09b6dc1cd0ehttps://csnotes.medium.com/ft-printf-tutorial-42project-f09b6dc1cd0e
-2) https://42-cursus.gitbook.io/guide/rank-01/ft_printf another one
-3) others exmpls: 
-- https://github.com/ivotints/ft_printf/blob/main/ft_functions.c
-- https://github.com/M2kura/42-ft_printf
