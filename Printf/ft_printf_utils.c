@@ -6,7 +6,7 @@
 /*   By: georgiilapshin <georgiilapshin@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:28:26 by georgiilaps       #+#    #+#             */
-/*   Updated: 2025/02/28 19:45:09 by georgiilaps      ###   ########.fr       */
+/*   Updated: 2025/03/01 15:19:08 by georgiilaps      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,19 @@ int	ft_putchar_fd(char c, int fd)
 int	ft_putstr(char *str)
 {
 	int	counter;
-	int	ret;
 
 	counter = 0;
 	if (str == NULL)
 		return (write(1, "(null)", 6));
 	while (str[counter])
 	{
-		ret = ft_putchar_fd(str[counter], 1);
-		if (ret == -1)
-			return (-1);
+		ft_putchar_fd(str[counter], 1);
 		counter++;
 	}
 	return (counter);
 }
 
-int	ft_putnbr_fd(int n)
+int	ft_putnbr(long n)
 {
 	int	count;
 
@@ -49,26 +46,14 @@ int	ft_putnbr_fd(int n)
 		n = -n;
 	}
 	if (n >= 10)
-		count += ft_putnbr_fd(n / 10);
+		count += ft_putnbr(n / 10);
 	count += ft_putchar_fd((n % 10) + '0', 1);
 	return (count);
 }
 
-int	ft_putunnbr(unsigned int n)
-{
-	int	count;
-
-	count = 0;
-	if (n >= 10)
-		count += ft_putunnbr(n / 10);
-	count += ft_putchar_fd((n % 10) + '0', 1);
-	return (count);
-}
-
-int	ft_puthex(unsigned int i, char x)
+int	ft_puthex(unsigned long i, char x)
 {
 	int		counter;
-	int		ret;
 	char	*base;
 
 	counter = 0;
@@ -76,15 +61,7 @@ int	ft_puthex(unsigned int i, char x)
 	if (x == 'x')
 		base = "0123456789abcdef";
 	if (i >= 16)
-	{
-		ret = ft_puthex((i / 16), x);
-		if (ret == -1)
-			return (-1);
-		counter += ret;
-	}
-	ret = ft_putchar_fd(base[i % 16], 1);
-	if (ret == -1)
-		return (-1);
-	counter += ret;
+		counter += ft_puthex((i / 16), x);
+	counter += ft_putchar_fd(base[i % 16], 1);
 	return (counter);
 }
